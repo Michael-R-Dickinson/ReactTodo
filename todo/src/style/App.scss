@@ -1,0 +1,86 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@import "./variables";
+@import "./fonts";
+
+
+p {
+    margin: 2px 0px;
+}
+
+.App {
+    text-align: center;
+    background-color: #78b6d3;
+    width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.body {
+    background-color: $primary-background;
+}
+
+.sidebar {
+    // min-width: 180px;
+    min-width: 299px;
+    max-width: 300px;
+    // padding-top: 20px;
+    background-color: $secondary-background;
+
+    %cell-container {
+        @include grid-spaced-diometric;
+        text-align: left;
+        padding: 0px 20px;
+        height: 30px;
+        font-family: Exo;
+        // grid-gap: 0;
+    }
+
+    .inboxes {
+        .inbox-container {
+            @extend %cell-container;
+            // background-color: rgb(151, 217, 255);
+
+            p {
+                font-size: 12px;
+            }
+
+        }
+
+    }
+
+    .projects {
+        .project-container {
+            @extend %cell-container;
+            // background-color: rgb(189, 242, 255);
+
+            p {
+                font-size: 12px;
+                padding-left: 10px;
+            }
+
+            &:hover {
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.11);
+            }
+        }
+
+        .project-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-right: 10px;
+
+        }
+
+        .dot {
+            @include dot ($size: 8px);
+        }
+
+    }
+
+}
