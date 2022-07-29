@@ -2,18 +2,9 @@ import React from 'react';
 import { IconContext } from "react-icons";
 import { InboxType, IconType, iconProperties } from './sidebar_types'
 
-import { BsCalendarDate, BsFillInboxFill, BsCalendar3 } from 'react-icons/bs'
-import { TbInboxOff, TbFilter } from 'react-icons/tb'
 
-
-export default function Inboxes({ }) { // potential props: inboxes, iconSize
+export default function Inboxes({ inboxes }: { inboxes: InboxType[] }) { // potential props: inboxes, iconSize
     const iconScale = 16;
-
-    const inboxes: InboxType[] = [
-        { inboxName: 'Today', count: 2, icon: { iconSrc: BsCalendarDate, size: 1, color: 'red' }, id: 1 },
-        { inboxName: 'Upcoming', count: 1, icon: { iconSrc: BsCalendar3, size: 1, color: 'blue' }, id: 2 },
-        { inboxName: 'Filters', count: 1, icon: { iconSrc: TbFilter, size: 1, color: 'green' }, id: 2 }
-    ]
 
     const iconScaledInboxes = inboxes.map(inbox => scaleIconSize({ inbox: inbox, iconScale: iconScale }))
     const inboxCells = iconScaledInboxes.map(inbox =>

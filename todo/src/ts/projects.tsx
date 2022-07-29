@@ -1,12 +1,6 @@
 import { ProjectType } from './sidebar_types';
 
-export default function Projects({ }) {
-    const projects: ProjectType[] = [
-        { name: 'project1', priority: 1, count: 2, id: 1 },
-        { name: 'project2', priority: 2, count: 3, id: 2 },
-        { name: 'project2', priority: 3, count: 4, id: 3 }
-    ]
-
+export default function Projects({ projects }: { projects: ProjectType[] }) {
     const projectCells = projects.map(project =>
         <Project {...project} />
     )

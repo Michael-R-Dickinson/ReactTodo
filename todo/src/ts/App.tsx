@@ -3,6 +3,9 @@ import React from 'react';
 import Body from './Body';
 import Sidebar from './sidebar';
 
+
+import { inboxes, projects } from './staticData'
+
 // Style
 import '../style/App.scss'
 
@@ -10,7 +13,7 @@ import '../style/App.scss'
 function App() {
   return (
     <div className="App">
-      <Sidebar />
+      <Sidebar inboxes={inboxes} projects={projects} />
       <Body />
     </div>
   );
