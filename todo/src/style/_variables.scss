@@ -1,6 +1,8 @@
 $primary-background: #ffffff;
 $secondary-background: #f5f5f5;
 
+$hover-sidebar-cell: rgba(235, 235, 235, 0.664);
+
 @mixin flex-center {
     display: flex;
     align-content: center;

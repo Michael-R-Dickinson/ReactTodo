@@ -26,19 +26,28 @@ p {
 }
 
 .sidebar {
-    // min-width: 180px;
-    min-width: 299px;
-    max-width: 300px;
-    // padding-top: 20px;
     background-color: $secondary-background;
+    min-width: 180px;
+    max-width: 300px;
+
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 5px;
 
     %cell-container {
         @include grid-spaced-diometric;
-        text-align: left;
-        padding: 0px 20px;
         height: 30px;
+        padding: 0px 15px 0px 10px;
+        border-radius: 8px;
+        text-align: left;
         font-family: Exo;
         // grid-gap: 0;
+
+        &:hover {
+            // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.11);
+            background-color: $hover-sidebar-cell;
+        }
+
     }
 
     %general-title-container {
@@ -50,6 +59,7 @@ p {
     }
 
     .inboxes {
+
         .inbox {
             @extend %cell-container;
             // background-color: rgb(151, 217, 255);
@@ -78,9 +88,6 @@ p {
                 padding-left: 10px;
             }
 
-            &:hover {
-                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.11);
-            }
         }
 
         .title-container {
