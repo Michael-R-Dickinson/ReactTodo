@@ -1,7 +1,11 @@
 import React from 'react';
-// import './App.css';
 
+import { BsCalendarDate, BsFillInboxFill, BsCalendar3 } from 'react-icons/bs'
+import { TbInboxOff, TbFilter } from 'react-icons/tb'
+
+// Style
 import './style/App.scss'
+
 
 function App() {
   return (
@@ -36,8 +40,9 @@ function Sidebar({ }) {
 
 function Inboxes({ }) {
   const inboxes = [
-    { name: 'inbox1', count: 2, id: 1 },
-    { name: 'inbox2', count: 1, id: 2 }
+    { name: 'Today', count: 2, id: 1 },
+    { name: 'Upcoming', count: 1, id: 2 },
+    { name: 'Filters', count: 1, id: 2 }
   ]
 
   const inboxCells = inboxes.map(inbox =>
@@ -51,12 +56,31 @@ function Inboxes({ }) {
 
 function Inbox({ name, count, id }: { name: string, count: number, id: number }) {
   return (
-    <div className='inbox-container'>
-      <p>{name}</p>
+    <div className='inbox'>
+      <div className='title-container'>
+        <InboxIcon inboxName={name} />
+        <p>{name}</p>
+      </div>
       <p>{count}</p>
     </div>
   )
 }
+
+function InboxIcon({ inboxName }: { inboxName: string }) {
+  const inboxIconLookup = {
+    'default': <TbInboxOff />,
+    'Today': <BsCalendarDate />,
+    'Upcoming': <BsCalendar3 />,
+    'Filters': <TbFilter />
+
+  }
+
+  if (hasKey(inboxIconLookup, inboxName)) {
+    return (inboxIconLookup[inboxName])
+  }
+  return inboxIconLookup.default;
+}
+
 
 function Projects({ }) {
   type project = {
@@ -90,8 +114,8 @@ function Project({ name, priority, count, id }: { name: string, count: number, p
   }
 
   return (
-    <div className='project-container'>
-      <div className='project-title'>
+    <div className='project'>
+      <div className='title-container'>
         <span className="dot" style={{ backgroundColor: projectPriorityColors[priority] }}></span>
         <p>{name}</p>
       </div>
@@ -100,3 +124,9 @@ function Project({ name, priority, count, id }: { name: string, count: number, p
   )
 }
 
+
+
+// Helper functions
+function hasKey<O>(obj: O, key: PropertyKey): key is keyof O {
+  return key in obj
+}

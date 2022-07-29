@@ -41,21 +41,35 @@ p {
         // grid-gap: 0;
     }
 
+    %general-title-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 10px;
+
+    }
+
     .inboxes {
-        .inbox-container {
+        .inbox {
             @extend %cell-container;
             // background-color: rgb(151, 217, 255);
 
             p {
                 font-size: 12px;
+                padding-left: 10px;
+
             }
 
+        }
+
+        .title-container {
+            @extend %general-title-container;
         }
 
     }
 
     .projects {
-        .project-container {
+        .project {
             @extend %cell-container;
             // background-color: rgb(189, 242, 255);
 
@@ -69,12 +83,8 @@ p {
             }
         }
 
-        .project-title {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding-right: 10px;
-
+        .title-container {
+            @extend %general-title-container;
         }
 
         .dot {
