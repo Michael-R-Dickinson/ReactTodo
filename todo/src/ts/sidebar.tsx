@@ -1,8 +1,7 @@
 import Inboxes from './inboxes'
 import Projects from './projects'
 
-import { ProjectType } from './sidebar_types';
-import { InboxType } from './sidebar_types'
+import type { ProjectType, InboxType } from './sidebar_types';
 
 
 export default function Sidebar({ inboxes, projects, activeCell, setActiveCell }: {

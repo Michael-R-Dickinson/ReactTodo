@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconContext } from "react-icons";
-import { InboxType, IconType, iconProperties } from './sidebar_types'
+import type { InboxType, IconType, iconProperties } from './sidebar_types'
 
 
 export default function Inboxes({ inboxes, activeCell, setActiveCell }: {

@@ -1,19 +1,19 @@
-export type IconType = (props: any) => JSX.Element;
+type IconType = (props: any) => JSX.Element;
 
-export interface iconProperties {
+interface iconProperties {
     iconSrc: IconType,
     color: string,
     size: number,
 }
 
-export type InboxType = {
+type InboxType = {
     inboxName: string,
     count: number,
     id: number,
     icon: iconProperties,
 }
 
-export type ProjectType = {
+type ProjectType = {
     name: string,
     priority: number,
     count: number,
@@ -21,4 +21,4 @@ export type ProjectType = {
 }
 
 
-// export { Iinbox, iconProperties , IconType };
+export type { InboxType, ProjectType, iconProperties, IconType };

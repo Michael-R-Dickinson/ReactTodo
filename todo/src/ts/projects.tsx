@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-import { ProjectType } from './sidebar_types';
+import type { ProjectType } from './sidebar_types';
 import { BsArrowRightCircle } from 'react-icons/bs';
 
 export default function Projects({ projects, activeCell, setActiveCell }: {

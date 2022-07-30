@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Body from './Body';
+import Body from './body';
 import Sidebar from './sidebar';
 
 

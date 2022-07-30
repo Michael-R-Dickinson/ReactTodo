@@ -1,7 +1,13 @@
 $primary-background: #ffffff;
 $secondary-background: #f5f5f5;
 
-$selected-sidebar-cell: rgba(235, 235, 235, 0.664);
+$selected-cell: rgba(235, 235, 235, 0.664);
+
+$body-light-text: rgba(0, 0, 0, 0.5);
+$body-light-text-size: 10px;
+$focused-text: rgba(0, 0, 0, 0.6);
+$light-line: rgba(0, 0, 0, 0.05);
+
 
 @mixin flex-center {
     display: flex;
@@ -22,4 +28,19 @@ $selected-sidebar-cell: rgba(235, 235, 235, 0.664);
     background-color: $color;
     border-radius: 50%;
     display: inline-block;
+}
+
+@mixin hover-accent {
+    padding: 0.2em;
+    border-radius: 0.3em;
+
+    &:hover {
+        background-color: $selected-cell;
+
+        * {
+            color: $focused-text;
+        }
+
+    }
+
 }
