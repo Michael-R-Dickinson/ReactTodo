@@ -6,7 +6,7 @@ export interface iconProperties {
     size: number,
 }
 
-export interface InboxType {
+export type InboxType = {
     inboxName: string,
     count: number,
     id: number,

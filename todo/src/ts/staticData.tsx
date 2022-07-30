@@ -1,18 +1,20 @@
-import { BsCalendarDate, BsFillInboxFill, BsCalendar3 } from 'react-icons/bs'
+import { BsCalendarDate, BsFillInboxFill, BsCalendar3, BsInbox } from 'react-icons/bs'
+import { FiInbox } from 'react-icons/fi'
 import { TbInboxOff, TbFilter } from 'react-icons/tb'
 
 import { ProjectType } from './sidebar_types';
 import { InboxType } from './sidebar_types'
 
 
-export const projects: ProjectType[] = [
-    { name: 'project1', priority: 1, count: 2, id: 1 },
-    { name: 'project2', priority: 2, count: 3, id: 2 },
-    { name: 'project2', priority: 3, count: 4, id: 3 }
+export const defaultProjects: ProjectType[] = [
+    { name: 'project1', priority: 1, count: 2, id: 10 },
+    { name: 'project2', priority: 2, count: 3, id: 20 },
+    { name: 'project2', priority: 3, count: 4, id: 30 }
 ]
 
-export const inboxes: InboxType[] = [
-    { inboxName: 'Today', count: 2, icon: { iconSrc: BsCalendarDate, size: 1, color: 'red' }, id: 1 },
-    { inboxName: 'Upcoming', count: 1, icon: { iconSrc: BsCalendar3, size: 1, color: 'blue' }, id: 2 },
-    { inboxName: 'Filters', count: 1, icon: { iconSrc: TbFilter, size: 1, color: 'green' }, id: 2 }
+export const defaultInboxes: InboxType[] = [
+    { inboxName: 'Inbox', count: 4, icon: { iconSrc: FiInbox, size: 1, color: '#3d7fe3' }, id: 4 },
+    { inboxName: 'Today', count: 2, icon: { iconSrc: BsCalendarDate, size: 1, color: '#269443' }, id: 3 },
+    { inboxName: 'Upcoming', count: 1, icon: { iconSrc: BsCalendar3, size: 1, color: '#6d34c3' }, id: 2 },
+    { inboxName: 'Filters', count: 1, icon: { iconSrc: TbFilter, size: 1, color: '#efaa51' }, id: 1 }
 ]

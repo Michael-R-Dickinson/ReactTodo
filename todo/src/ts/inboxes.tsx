@@ -3,12 +3,16 @@ import { IconContext } from "react-icons";
 import { InboxType, IconType, iconProperties } from './sidebar_types'
 
 
-export default function Inboxes({ inboxes }: { inboxes: InboxType[] }) { // potential props: inboxes, iconSize
-    const iconScale = 16;
+export default function Inboxes({ inboxes, activeCell, setActiveCell }: {
+    inboxes: InboxType[],
+    activeCell: number,
+    setActiveCell: (id: number) => void,
+}) {
+    const iconScale = 16; // grab from css
 
     const iconScaledInboxes = inboxes.map(inbox => scaleIconSize({ inbox: inbox, iconScale: iconScale }))
     const inboxCells = iconScaledInboxes.map(inbox =>
-        <Inbox {...inbox} />
+        <Inbox {...inbox} selected={inbox.id === activeCell} setActiveCell={setActiveCell} key={inbox.id} />
     )
 
     return (
@@ -20,12 +24,12 @@ export default function Inboxes({ inboxes }: { inboxes: InboxType[] }) { // pote
     )
 }
 
-function Inbox({ inboxName, count, id, icon }: InboxType) {
+function Inbox({ inboxName, count, id, icon, selected, setActiveCell }: InboxType & { selected: boolean, setActiveCell: (id: number) => void }) {
     return (
-        <div className='inbox'>
+        <div className={`inbox ${selected ? 'selected' : ""}`} onClick={() => setActiveCell(id)}>
             <div className='title-container'>
                 <InboxIcon iconSrc={icon.iconSrc} size={icon.size} color={icon.color} />
-                <p>{inboxName}</p>
+                <p className='aligned-text'>{inboxName}</p>
             </div>
             <p>{count}</p>
         </div>

@@ -1,19 +1,46 @@
-import { ProjectType } from './sidebar_types';
+import { useState } from 'react';
 
-export default function Projects({ projects }: { projects: ProjectType[] }) {
+
+import { ProjectType } from './sidebar_types';
+import { BsArrowRightCircle } from 'react-icons/bs';
+
+export default function Projects({ projects, activeCell, setActiveCell }: {
+    projects: ProjectType[],
+    activeCell: number,
+    setActiveCell: (id: number) => void
+}) {
+    const [showProjects, setShowProjects] = useState(true);
+
     const projectCells = projects.map(project =>
-        <Project {...project} />
+        <Project
+            {...project}
+            selected={project.id === activeCell}
+            setActiveCell={setActiveCell}
+            visible={showProjects}
+            key={project.id}
+        />
     )
 
     return (
         <div className='projects'>
+            <div className='header' onClick={() => setShowProjects(!showProjects)}>
+                <BsArrowRightCircle className={`arrow ${showProjects && 'rotate'}`} />
+                <strong>Projects</strong>
+            </div>
             {projectCells}
         </div>
     )
 }
 
 
-function Project({ name, priority, count, id }: { name: string, count: number, priority: number, id: number }) {
+function Project({ name, priority, count, id, selected, setActiveCell, visible }:
+    ProjectType & {
+        selected: boolean,
+        setActiveCell: (id: number) => void,
+        visible: boolean,
+        key: number
+    }) {
+
     enum projectPriorityColors {
         '#db503f' = 1,
         '#66b0d3',
@@ -21,10 +48,10 @@ function Project({ name, priority, count, id }: { name: string, count: number, p
     }
 
     return (
-        <div className='project'>
+        <div className={`project ${visible ? (selected && 'selected') : 'hidden'}`} onClick={() => setActiveCell(id)}>
             <div className='title-container'>
                 <span className="dot" style={{ backgroundColor: projectPriorityColors[priority] }}></span>
-                <p>{name}</p>
+                <p className="aligned-text">{name}</p>
             </div>
             <p>{count}</p>
         </div>

@@ -1,19 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Body from './Body';
 import Sidebar from './sidebar';
 
 
-import { inboxes, projects } from './staticData'
+import { defaultInboxes, defaultProjects } from './staticData'
+import { Md5 } from 'ts-md5/dist/md5';
 
 // Style
 import '../style/App.scss'
 
 
 function App() {
+  const projects = defaultProjects.map((project) => {
+    let hashedProject = { ...project, id: hashObject(project) }
+    return hashedProject
+  })
+
+  const inboxes = defaultInboxes.map((inbox) => {
+    let hashedInbox = { ...inbox, id: hashObject(inbox) }
+    return hashedInbox
+  })
+
+  // const [activeInbox, setActiveInbox] = useState<number>(inboxes[0].id)
+  const [activeCell, setActiveCell] = useState<number>(inboxes[0].id)
+
   return (
     <div className="App">
-      <Sidebar inboxes={inboxes} projects={projects} />
+      <Sidebar
+        inboxes={inboxes}
+        projects={projects}
+        activeCell={activeCell}
+        setActiveCell={setActiveCell}
+      />
       <Body />
     </div>
   );
@@ -21,14 +40,6 @@ function App() {
 
 export default App;
 
-
-function Heading({ title }: { title: string }) {
-  return (
-    <h1>{title}</h1>
-  )
-}
-
-// Helper functions
-function hasKey<O>(obj: O, key: PropertyKey): key is keyof O {
-  return key in obj
+function hashObject(obj: any): number {
+  return parseInt(Md5.hashStr(JSON.stringify(obj)).replace(/\D/g, ""))
 }

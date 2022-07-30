@@ -12,6 +12,10 @@ p {
     margin: 2px 0px;
 }
 
+h3 {
+    margin: 5px 3px
+}
+
 .App {
     text-align: center;
     background-color: #78b6d3;
@@ -34,18 +38,40 @@ p {
     padding-left: 20px;
     padding-right: 5px;
 
+    position: relative;
+
+    user-select: none;
+
+    .selected {
+        background-color: $selected-sidebar-cell;
+    }
+
+    .aligned-text {
+        position: absolute;
+        left: 2.6rem;
+    }
+
+
     %cell-container {
         @include grid-spaced-diometric;
         height: 30px;
         padding: 0px 15px 0px 10px;
         border-radius: 8px;
         text-align: left;
-        font-family: Exo;
+        cursor: pointer;
+
+        // opacity: 0;
+
+        // font-family: Exo;
+
+        transition: all 0.3s ease;
         // grid-gap: 0;
+
+
 
         &:hover {
             // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.11);
-            background-color: $hover-sidebar-cell;
+            background-color: $selected-sidebar-cell;
         }
 
     }
@@ -67,7 +93,6 @@ p {
             p {
                 font-size: 12px;
                 padding-left: 10px;
-
             }
 
         }
@@ -79,6 +104,9 @@ p {
     }
 
     .projects {
+        overflow-y: hidden;
+        margin-top: 10px;
+
         .project {
             @extend %cell-container;
             // background-color: rgb(189, 242, 255);
@@ -97,6 +125,41 @@ p {
         .dot {
             @include dot ($size: 8px);
         }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+        // Dropdown Animation Stuff
+        .header {
+            @include flex-center;
+            justify-content: flex-start;
+            cursor: pointer;
+
+            strong {
+                @extend .aligned-text;
+                font-size: 12px;
+                font-weight: bold;
+                color: #333;
+                margin-left: 4.5%;
+
+                // background-color: $secondary-background;
+
+            }
+        }
+
+        .arrow {
+            margin: 7px;
+            transition: all 0.4s ease;
+        }
+
+        .rotate {
+            transform: rotateZ(90deg);
+        }
+
+
 
     }
 
