@@ -2,12 +2,16 @@
 
 function DateTag({ dueDate }: { dueDate: Date }) {
     const today = new Date();
-    // classifies whether a date is overdue and marks it as today or overdue
-    const timeSignature = dueDate.getDate() < today.getDate() ? 'overdue' : 'today'
+
+    const todayDay = today.getDate();
+    const dueDay = dueDate.getDate()
+
+    const timeSignature = dueDay < todayDay ? 'overdue' : dueDay > todayDay ? 'future' : 'today'
+
     return (
-        <div className={`date-tag ${timeSignature}`}>
+        <div className={`date-tag`}>
             <CalendarIcon className={`calendar-icon  ${timeSignature}`} />
-            <p className="">
+            <p className={`${timeSignature}`}>
                 {dueDate.toLocaleDateString('en-us', { month: 'short', day: 'numeric' })}
             </p>
         </div>

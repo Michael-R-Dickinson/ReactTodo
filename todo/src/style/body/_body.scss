@@ -124,7 +124,8 @@
             justify-items: start;
             align-items: center;
 
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            // margin-bottom: 5px;
 
             p {
                 margin: 0px;
@@ -156,13 +157,19 @@
             }
 
             .overdue {
-                color: #D1453B
+                fill: $overdue-color;
+                color: $overdue-color;
             }
 
             .today {
-                color: rgb(47, 165, 57)
+                fill: $today-color;
+                color: $today-color;
             }
 
+            .future {
+                fill: $future-color;
+                color: $future-color;
+            }
 
             .priority-icon {
                 height: $task-priority-icon-size;

@@ -21,6 +21,10 @@ $priority-2-color: rgb(248, 173, 61);
 $priority-3-color: rgb(74, 170, 214);
 $priority-4-color: rgb(175, 175, 175);
 
+$overdue-color: #D1453B;
+$today-color: rgb(47, 165, 57);
+$future-color: rgb(74, 170, 214);
+
 @mixin flex-center {
     display: flex;
     align-content: center;
