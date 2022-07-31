@@ -4,11 +4,11 @@ import Body from './body';
 import Sidebar from './sidebar';
 
 
-import { defaultInboxes, defaultProjects } from './staticData'
 import { Md5 } from 'ts-md5/dist/md5';
+import { defaultGroupers, defaultInboxes, defaultProjects, defaultTasks } from './staticData';
 
 // Style
-import '../style/App.scss'
+import '../style/App.scss';
 
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
         activeCell={activeCell}
         setActiveCell={setActiveCell}
       />
-      <Body />
+      <Body tasks={defaultTasks} taskGroupers={defaultGroupers} />
     </div>
   );
 }

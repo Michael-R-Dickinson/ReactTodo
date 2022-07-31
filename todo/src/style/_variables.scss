@@ -1,13 +1,25 @@
 $primary-background: #ffffff;
-$secondary-background: #f5f5f5;
+$secondary-background: #f5f5f58a;
+$primary-font-color: #202020c7;
 
 $selected-cell: rgba(235, 235, 235, 0.664);
+$icon-size: 10px;
 
 $body-light-text: rgba(0, 0, 0, 0.5);
-$body-light-text-size: 10px;
+$body-light-text-size: 14px;
 $focused-text: rgba(0, 0, 0, 0.6);
-$light-line: rgba(0, 0, 0, 0.05);
+$light-line: rgba(0, 0, 0, 0.1);
 
+$task-base-size: 12px;
+$task-small-size: $task-base-size*0.8;
+$task-priority-icon-size: $task-base-size*2.1;
+
+$top-spacing: 4rem;
+
+$priority-1-color: rgb(230, 54, 54);
+$priority-2-color: rgb(248, 173, 61);
+$priority-3-color: rgb(74, 170, 214);
+$priority-4-color: rgb(175, 175, 175);
 
 @mixin flex-center {
     display: flex;

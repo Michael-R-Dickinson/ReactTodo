@@ -1,4 +1,9 @@
 @font-face {
+    font-family: 'Segoe';
+    src: local('Segoe'), url(../fonts/segoeui.otf) format('opentype');
+}
+
+@font-face {
     font-family: 'Exo';
     src: local('Exo'), url(../fonts/exo.light.otf) format('opentype');
     /* other formats include: 'woff2', 'truetype, 'opentype',

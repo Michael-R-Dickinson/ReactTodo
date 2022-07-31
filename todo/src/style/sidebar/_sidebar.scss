@@ -1,0 +1,57 @@
+@import './inboxes';
+@import './projects';
+
+.sidebar {
+    background-color: $secondary-background;
+    min-width: 250px;
+    max-width: 400px;
+
+    padding-top: $top-spacing;
+    padding-left: 20px;
+    padding-right: 0px;
+
+    position: relative;
+
+    user-select: none;
+    color: $primary-font-color;
+
+
+    .selected {
+        background-color: $selected-cell;
+    }
+
+    .aligned-text {
+        position: absolute;
+        left: 3rem;
+    }
+
+
+    %cell-container {
+        @include grid-spaced-diometric;
+        height: 36px;
+        padding: 0px 15px 0px 10px;
+        border-radius: 8px;
+        text-align: left;
+        cursor: pointer;
+
+        // margin: 1px 0px;
+
+        transition: all 0.3s ease;
+
+        &:hover {
+            // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.11);
+            background-color: $selected-cell;
+        }
+
+    }
+
+    %general-title-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 10px;
+
+    }
+
+
+}

@@ -42,5 +42,9 @@ interface AuthorInterface {
     id: number;
 }
 
+type TaskGrouper = {
+    name: string,
+    fn: (tasks: TaskInterface) => boolean
+}
 
-export type { SettingsInterface, TaskInterface, LabelInterface, CommentInterface, AuthorInterface }
+export type { SettingsInterface, TaskInterface, LabelInterface, CommentInterface, AuthorInterface, TaskGrouper }

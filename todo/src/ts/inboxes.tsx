@@ -8,7 +8,7 @@ export default function Inboxes({ inboxes, activeCell, setActiveCell }: {
     activeCell: number,
     setActiveCell: (id: number) => void,
 }) {
-    const iconScale = 16; // grab from css
+    const iconScale = 20; // grab from css
 
     const iconScaledInboxes = inboxes.map(inbox => scaleIconSize({ inbox: inbox, iconScale: iconScale }))
     const inboxCells = iconScaledInboxes.map(inbox =>

@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 import type { ProjectType } from './sidebar_types';
 import { BsArrowRightCircle } from 'react-icons/bs';
+import { ReactComponent as ProjectArrow } from '../icons/arrow.svg'
+
 
 export default function Projects({ projects, activeCell, setActiveCell }: {
     projects: ProjectType[],
@@ -24,7 +26,7 @@ export default function Projects({ projects, activeCell, setActiveCell }: {
     return (
         <div className='projects'>
             <div className='header' onClick={() => setShowProjects(!showProjects)}>
-                <BsArrowRightCircle className={`arrow ${showProjects && 'rotate'}`} />
+                <ProjectArrow className={`arrow ${showProjects && 'rotate'}`} />
                 <strong>Projects</strong>
             </div>
             {projectCells}

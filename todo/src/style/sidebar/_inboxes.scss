@@ -1,0 +1,18 @@
+.inboxes {
+
+    .inbox {
+        @extend %cell-container;
+        // background-color: rgb(151, 217, 255);
+
+        p {
+            font-size: 14px;
+            padding-left: 10px;
+        }
+
+    }
+
+    .title-container {
+        @extend %general-title-container;
+    }
+
+}

@@ -7,20 +7,14 @@ import { GoSettings } from 'react-icons/go'
 
 import { TaskInterface } from "./body_types"
 
-export default function Header({ }: {}) {
+export default function Header() {
 
     return (
         <>
             <div className='header'>
                 <TodayDate />
-
-                <IconContext.Provider value={{ className: 'settings-panel-icon' }}>
-                    <SettingsPanelButton />
-                </IconContext.Provider>
-
-                <IconContext.Provider value={{ className: 'task-sort-arrow' }}>
-                    <TaskSortDisplay />
-                </IconContext.Provider>
+                <SettingsPanelButton />
+                <TaskSortDisplay />
             </div>
             <div className='horizontal-line'></div>
         </>
@@ -37,7 +31,7 @@ function SettingsPanelButton() {
 
     return (
         <div className='top-right-box' onClick={() => setSettings(switchSort())}>
-            <GoSettings />
+            <GoSettings className='settings-panel-icon' />
             <p>View</p>
         </div >
     )
@@ -47,7 +41,7 @@ function TaskSortDisplay() {
     const { settings } = useContext(SettingsContext)
     return (
         <div className='bottom-box'>
-            <BsArrowUp />
+            <BsArrowUp className='task-sort-arrow' />
             <strong className='sort-display'>Sorted by: {settings.sort.name}</strong>
 
         </div>

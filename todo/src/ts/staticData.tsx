@@ -3,7 +3,7 @@ import { FiInbox } from 'react-icons/fi'
 import { TbInboxOff, TbFilter } from 'react-icons/tb'
 
 import { ProjectType, InboxType } from './sidebar_types';
-import { SettingsInterface, TaskInterface } from './body_types';
+import { SettingsInterface, TaskGrouper, TaskInterface } from './body_types';
 
 export const defaultProjects: ProjectType[] = [
     { name: 'project1', priority: 1, count: 2, id: 10 },
@@ -26,3 +26,48 @@ export const defaultSettings = {
     displayLabels: true,
 
 }
+
+export const defaultGroupers: TaskGrouper[] = [
+    { name: 'Overdue', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() < today.getDate() } },
+    { name: 'Today', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() == today.getDate() } }
+]
+
+export const defaultTasks: TaskInterface[] = [
+    {
+        title: 'Today Task 1',
+        description: 'Today Task 1 description',
+        project: { name: 'project1', priority: 1, count: 2, id: 10 },
+        status: false,
+        dueDate: new Date(),
+        priority: 1,
+        labels: [],
+        comments: [],
+        subTasks: [],
+        id: 1,
+    },
+    {
+        title: 'Today Task 2',
+        description: 'Today Task 2 description',
+        project: { name: 'project1', priority: 1, count: 2, id: 10 },
+        status: false,
+        dueDate: new Date(),
+        priority: 2,
+        labels: [],
+        comments: [],
+        subTasks: [],
+        id: 2,
+    },
+    {
+        title: 'Overdue Task 1',
+        description: 'Overdue Task 1 description',
+        project: { name: 'project1', priority: 1, count: 2, id: 10 },
+        status: false,
+        dueDate: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+        priority: 3,
+        labels: [],
+        comments: [],
+        subTasks: [],
+        id: 3,
+    }
+
+]

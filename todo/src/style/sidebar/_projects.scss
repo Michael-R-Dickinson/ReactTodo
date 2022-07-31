@@ -1,0 +1,66 @@
+.projects {
+    overflow-y: hidden;
+    margin-top: 10px;
+
+    .project {
+        @extend %cell-container;
+        // background-color: rgb(189, 242, 255);
+
+
+        p {
+            font-size: 14px;
+            padding-left: 10px;
+        }
+
+    }
+
+    .title-container {
+        @extend %general-title-container;
+    }
+
+    .dot {
+        @include dot ($size: $icon-size);
+        position: relative;
+        left: $icon-size*0.3;
+    }
+
+    .hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
+    // Dropdown Animation Stuff
+    .header {
+        @include flex-center;
+
+        justify-content: flex-start;
+        cursor: pointer;
+
+        strong {
+
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+            margin-left: 0.5rem;
+
+            // background-color: $secondary-background;
+
+        }
+    }
+
+    .arrow {
+        position: relative;
+        left: $icon-size*0.3;
+        margin: 7px;
+        transition: all 0.4s ease;
+        transform: rotateZ(-90deg);
+    }
+
+    .rotate {
+        transform: rotateZ(0deg);
+    }
+
+
+
+}
