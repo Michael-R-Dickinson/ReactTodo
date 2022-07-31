@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import type { ProjectType } from './sidebar_types';
 import { BsArrowRightCircle } from 'react-icons/bs';
-import { ReactComponent as ProjectArrow } from '../icons/arrow.svg'
+import { ReactComponent as ProjectArrow } from '../../icons/arrow.svg'
 
 
 export default function Projects({ projects, activeCell, setActiveCell }: {

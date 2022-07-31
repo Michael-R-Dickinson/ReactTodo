@@ -1,7 +1,7 @@
 import React from 'react';
 import { defaultSettings } from './staticData';
 
-import { SettingsInterface } from './body_types';
+import { SettingsInterface } from './body/body_types';
 
 const SettingsContext = React.createContext({
     settings: defaultSettings,

@@ -2,8 +2,8 @@ import { BsCalendarDate, BsFillInboxFill, BsCalendar3, BsInbox } from 'react-ico
 import { FiInbox } from 'react-icons/fi'
 import { TbInboxOff, TbFilter } from 'react-icons/tb'
 
-import { ProjectType, InboxType } from './sidebar_types';
-import { SettingsInterface, TaskGrouper, TaskInterface } from './body_types';
+import { ProjectType, InboxType } from './sidebar/sidebar_types';
+import { SettingsInterface, TaskGrouper, TaskInterface } from './body/body_types';
 
 export const defaultProjects: ProjectType[] = [
     { name: 'project1', priority: 1, count: 2, id: 10 },

@@ -1,5 +1,5 @@
 import { TaskInterface } from "./body_types";
-import { ReactComponent as PriorityCircle } from '../icons/circle.svg'
+import { ReactComponent as PriorityCircle } from '../../icons/circle.svg'
 import DateTag from "./date_tag";
 
 function Task({

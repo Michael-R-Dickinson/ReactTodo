@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import SettingsContext from './settings_context';
+import SettingsContext from '../settings_context';
 
 import { IconContext } from "react-icons";
 import { BsArrowUp } from 'react-icons/bs'

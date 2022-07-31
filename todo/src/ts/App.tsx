@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import Body from './body';
-import Sidebar from './sidebar';
+import Body from './body/body';
+import Sidebar from './sidebar/sidebar';
 
 
 import { Md5 } from 'ts-md5/dist/md5';

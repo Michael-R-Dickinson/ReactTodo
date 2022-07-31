@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Header from './header';
 import TaskListContainer from './task_list_container';
 
-import { SettingsProvider } from "./settings_context";
-import { defaultSettings } from './staticData';
+import { SettingsProvider } from "../settings_context";
+import { defaultSettings } from '../staticData';
 import { TaskInterface, TaskGrouper } from './body_types';
 
 

@@ -1,4 +1,4 @@
-import { ProjectType } from './sidebar_types'
+import { ProjectType } from '../sidebar/sidebar_types'
 
 interface SettingsInterface {
     sort: SortInterface,
