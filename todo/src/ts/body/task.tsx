@@ -1,6 +1,7 @@
 import { TaskInterface } from "./body_types";
 import { ReactComponent as PriorityCircle } from '../../icons/circle.svg'
 import DateTag from "./date_tag";
+import Labels from "./labels";
 
 function Task({
     title,
@@ -26,6 +27,7 @@ function Task({
                     <p className="grid-flowing-item">{description}</p>
                     <div className="grid-flowing-item">
                         <DateTag dueDate={dueDate} />
+                        <Labels labels={labels} />
                     </div>
                 </div>
 
