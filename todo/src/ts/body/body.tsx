@@ -11,6 +11,7 @@ import { TaskInterface, TaskGrouper } from './body_types';
 export default function Body({ tasks, taskGroupers }: { tasks: TaskInterface[], taskGroupers: TaskGrouper[] }) {
     const [settings, setSettings] = useState(defaultSettings)
     const value = { settings: settings, setSettings: setSettings }
+
     return (
         <div className='body'>
             <SettingsProvider value={value}>

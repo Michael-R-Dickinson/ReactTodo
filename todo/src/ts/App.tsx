@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Body from './body/body';
 import Sidebar from './sidebar/sidebar';
 
 
-import { Md5 } from 'ts-md5/dist/md5';
 import { defaultGroupers, defaultInboxes, defaultProjects, defaultTasks } from './staticData';
 
 // Style
 import '../style/App.scss';
+import { TaskInterface } from './body/body_types';
+import { TaskOptionsProvider } from './task_options_context';
+import { hashObject } from './utils';
 
 
 function App() {
@@ -22,8 +24,14 @@ function App() {
     return hashedInbox
   })
 
-  // const [activeInbox, setActiveInbox] = useState<number>(inboxes[0].id)
   const [activeCell, setActiveCell] = useState<number>(inboxes[0].id)
+
+  const [tasks, setTasks] = useState(defaultTasks)
+
+  const openTask = (task: TaskInterface) => { }
+  const taskOptions = {
+    tasks: tasks, setTasks: setTasks, openTask
+  }
 
   return (
     <div className="App">
@@ -33,13 +41,18 @@ function App() {
         activeCell={activeCell}
         setActiveCell={setActiveCell}
       />
-      <Body tasks={defaultTasks} taskGroupers={defaultGroupers} />
-    </div>
+
+      <TaskOptionsProvider value={taskOptions} >
+        <Body
+          tasks={tasks}
+          taskGroupers={defaultGroupers} />
+      </TaskOptionsProvider>
+    </div >
   );
 }
 
 export default App;
 
-function hashObject(obj: any): number {
-  return parseInt(Md5.hashStr(JSON.stringify(obj)).replace(/\D/g, ""))
-}
+// TODO
+//get segoi semi bold
+//change priority button colors lower opacity

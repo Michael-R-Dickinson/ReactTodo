@@ -1,7 +1,12 @@
+import { useContext } from "react";
+import { ProjectType } from "../sidebar/sidebar_types";
+import TaskOptionsContext from "../task_options_context";
+import { delay } from "../utils";
 import { TaskInterface } from "./body_types";
-import { ReactComponent as PriorityCircle } from '../../icons/circle.svg'
 import DateTag from "./date_tag";
+import { PriorityIcon, ProjectIcon } from "./icons";
 import Labels from "./labels";
+import ProjectDisplay from "./project_display";
 
 function Task({
     title,
@@ -14,14 +19,17 @@ function Task({
     comments,
     subTasks,
     id,
-
 }: TaskInterface) {
+    const { setTasks, tasks } = useContext(TaskOptionsContext);
+
     return (
         <>
             <div className="task-container">
                 <div className="task-left-section">
-                    <PriorityIcon className={`priority-icon priority-${priority}`} />
-                    {/* <PriorityCircle className="priority-icon" /> */}
+                    <PriorityIcon
+                        className={`priority-${priority}`}
+                        onClick={async () => { await delay(200); setTasks(tasks.filter(task => task.id !== id)) }}
+                    />
                     <h5 className="title">{title}</h5>
 
                     <p className="grid-flowing-item">{description}</p>
@@ -31,6 +39,7 @@ function Task({
                     </div>
                 </div>
 
+                <ProjectDisplay project={project} />
             </div>
 
             <div className="horizontal-line" />
@@ -40,11 +49,3 @@ function Task({
 
 export default Task;
 
-function PriorityIcon({ className }: { className: string }) {
-    return (
-        <svg className={className} viewBox="3 3 18 18">
-            <path d="M12 7a5 5 0 110 10 5 5 0 010-10z"></path>
-        </svg>
-
-    )
-}

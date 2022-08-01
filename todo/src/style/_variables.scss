@@ -10,11 +10,12 @@ $body-light-text: rgba(0, 0, 0, 0.5);
 $body-light-text-size: 14px;
 $focused-text: rgba(0, 0, 0, 0.6);
 $light-line: rgba(0, 0, 0, 0.06);
+$light-border: rgba(0, 0, 0, 0.1);
 
 $task-base-size: 14px;
 $task-small-size: $task-base-size*0.85;
 $task-priority-icon-size: $task-base-size*2.1;
-
+$small-icon-spacing: 5px;
 $top-spacing: 4rem;
 
 $priority-1-color: rgb(252, 85, 85);

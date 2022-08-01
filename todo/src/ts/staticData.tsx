@@ -5,6 +5,13 @@ import { TbInboxOff, TbFilter } from 'react-icons/tb'
 import { ProjectType, InboxType } from './sidebar/sidebar_types';
 import { SettingsInterface, TaskGrouper, TaskInterface } from './body/body_types';
 
+export enum projectPriorityColors {
+    '#3eb89d' = 1,
+    '#66b0d3',
+    '#a43eb8',
+    '#3eb858',
+}
+
 export const defaultProjects: ProjectType[] = [
     { name: 'Computer Science', priority: 1, count: 2, id: 10 },
     { name: 'SAT Prep', priority: 2, count: 3, id: 20 },
@@ -28,9 +35,9 @@ export const defaultSettings = {
 }
 
 export const defaultGroupers: TaskGrouper[] = [
-    { name: 'Overdue', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() < today.getDate() } },
-    { name: 'Today', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() == today.getDate() } },
-    { name: 'Upcoming', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() > today.getDate() } }
+    { name: 'Overdue', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() < today.getDate() }, allowAddTask: false },
+    { name: 'Today', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() == today.getDate() }, allowAddTask: true },
+    { name: 'Upcoming', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() > today.getDate() }, allowAddTask: false }
 
 ]
 
@@ -38,7 +45,7 @@ export const defaultTasks: TaskInterface[] = [
     {
         title: 'Today Task 1',
         description: 'Today Task 1 description',
-        project: { name: 'project1', priority: 1, count: 2, id: 10 },
+        project: null,
         status: false,
         dueDate: new Date(),
         priority: 1,
@@ -50,7 +57,7 @@ export const defaultTasks: TaskInterface[] = [
     {
         title: 'Today Task 2',
         description: 'Today Task 2 description',
-        project: { name: 'project2', priority: 1, count: 2, id: 10 },
+        project: { name: 'project2', priority: 4, count: 2, id: 10 },
         status: false,
         dueDate: new Date(),
         priority: 2,
@@ -62,7 +69,7 @@ export const defaultTasks: TaskInterface[] = [
     {
         title: 'Overdue Task 1',
         description: 'Overdue Task 1 description',
-        project: { name: 'project3', priority: 1, count: 2, id: 10 },
+        project: { name: 'project3', priority: 2, count: 2, id: 10 },
         status: false,
         dueDate: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
         priority: 3,
@@ -81,8 +88,14 @@ export const defaultTasks: TaskInterface[] = [
         labels: [],
         comments: [],
         subTasks: [],
-        id: 3,
+        id: 4,
     }
 
 
 ]
+
+export const TaskOptions = {
+    tasks: defaultTasks,
+    setTasks: (tasks: TaskInterface[]) => { },
+    openTask: (task: TaskInterface) => { },
+}

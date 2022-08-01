@@ -5,8 +5,16 @@ function TaskListContainer({ taskGroupers, tasks }: {
     taskGroupers: TaskGrouper[],
     tasks: TaskInterface[],
 }) {
-    const taskLists = taskGroupers.map(({ name, fn }) => <TaskList listName={name} tasks={tasks.filter((task) => fn(task))} key={name} />)
-    console.log(taskLists)
+    const taskLists = taskGroupers.map(
+        ({ name, fn, allowAddTask }) =>
+            <TaskList
+                listName={name}
+                tasks={tasks.filter((task) => fn(task))}
+                allowAddTask={allowAddTask}
+                key={name}
+            />
+    );
+
     return (
         <div className="task-lists-container">
             {taskLists}

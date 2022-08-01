@@ -2,7 +2,7 @@ import { LabelInterface } from "./body_types";
 import { TagIcon } from "./icons";
 
 function Labels({ labels }: { labels: LabelInterface[] }) {
-    const labelComponents = labels.map(label => <Label {...label} />)
+    const labelComponents = labels.map(label => <Label {...label} key={label.id} />)
     return (
         <div className="labels-container">
             {labelComponents}

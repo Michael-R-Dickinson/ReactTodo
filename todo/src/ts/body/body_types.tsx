@@ -13,7 +13,7 @@ interface SortInterface {
 interface TaskInterface {
     title: string;
     description: string;
-    project: ProjectType;
+    project: ProjectType | null;
     status: boolean;
     dueDate: Date;
     priority: number;
@@ -44,7 +44,8 @@ interface AuthorInterface {
 
 type TaskGrouper = {
     name: string,
-    fn: (tasks: TaskInterface) => boolean
+    fn: (tasks: TaskInterface) => boolean,
+    allowAddTask: boolean
 }
 
 export type { SettingsInterface, TaskInterface, LabelInterface, CommentInterface, AuthorInterface, TaskGrouper }

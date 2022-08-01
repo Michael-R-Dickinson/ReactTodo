@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { ProjectType } from './sidebar_types';
 import { BsArrowRightCircle } from 'react-icons/bs';
 import { ReactComponent as ProjectArrow } from '../../icons/arrow.svg'
+import { projectPriorityColors } from '../staticData';
 
 
 export default function Projects({ projects, activeCell, setActiveCell }: {
@@ -42,12 +43,6 @@ function Project({ name, priority, count, id, selected, setActiveCell, visible }
         visible: boolean,
         key: number
     }) {
-
-    enum projectPriorityColors {
-        '#db503f' = 1,
-        '#66b0d3',
-        '#cbcecf'
-    }
 
     return (
         <div className={`project ${visible ? (selected && 'selected') : 'hidden'}`} onClick={() => setActiveCell(id)}>

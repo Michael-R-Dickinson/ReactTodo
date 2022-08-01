@@ -5,6 +5,96 @@
 
     border-radius: 5px;
 
+    .clickable {
+        cursor: pointer;
+    }
+
+    .unclickable {
+        cursor: not-allowed;
+        pointer-events: none !important;
+        opacity: 0.6
+    }
+
+    .date-tag {
+        font-size: $task-small-size;
+        // margin-right: 1px;
+        margin-top: 2px;
+        margin-right: $task-small-size;
+
+        display: flex;
+    }
+
+    .calendar-icon {
+        height: $task-small-size*1.2;
+        width: $task-small-size*1.2;
+        margin-right: $small-icon-spacing;
+    }
+
+    .overdue {
+        fill: $overdue-color;
+        color: $overdue-color;
+    }
+
+    .today {
+        fill: $today-color;
+        color: $today-color;
+    }
+
+    .future {
+        fill: $future-color;
+        color: $future-color;
+    }
+
+    .label {
+        display: flex;
+        align-items: center;
+        font-size: $task-small-size;
+        margin-right: $task-small-size;
+        margin-top: 2px;
+
+    }
+
+    .tag-icon {
+        height: $task-small-size*1.2;
+        width: $task-small-size*1.2;
+        margin-right: $small-icon-spacing;
+    }
+
+    .project-display-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: $task-small-size;
+
+        p {
+            font-size: $task-small-size;
+            color: $body-light-text;
+            margin-left: 5px;
+        }
+
+    }
+
+    .project-icon {
+        display: flex;
+        align-items: center;
+        height: $task-small-size;
+        width: $task-small-size;
+
+        // stupid hack to get the icon to align with the text
+        position: relative;
+        top: -1px;
+
+    }
+
+    .project-dot {
+        @include dot(8px, gray);
+    }
+
+    .project-inbox-icon {
+        fill: rgb(61, 127, 227);
+    }
+
+
     .header {
         height: 13%;
         min-height: 70px;
@@ -111,14 +201,20 @@
         }
     }
 
-    .task-list {
-        margin-bottom: 30px;
-    }
-
     .task-container {
         display: flex;
         justify-content: space-between;
         flex-wrap: no-wrap;
+        position: relative;
+
+        margin-bottom: 8px;
+
+        p {
+            margin: 0px;
+            font-size: $task-small-size;
+            color: $body-light-text;
+        }
+
 
         .task-left-section {
             display: grid;
@@ -129,15 +225,7 @@
             justify-items: start;
             align-items: center;
 
-            margin-bottom: 8px;
             margin-top: 2px;
-            // margin-bottom: 5px;
-
-            p {
-                margin: 0px;
-                font-size: $task-small-size;
-                color: $body-light-text;
-            }
 
             h5 {
                 font-weight: normal;
@@ -153,85 +241,222 @@
                 display: flex;
             }
 
-            .date-tag {
-                font-size: $task-small-size;
-                // margin-right: 1px;
-                margin-top: 2px;
-                margin-right: $task-small-size;
-
-                display: flex;
-            }
-
             .labels-container {
                 display: flex;
             }
 
-            .label {
-                display: flex;
-                align-items: center;
-                font-size: $task-small-size;
-                margin-right: $task-small-size;
-                margin-top: 2px;
+            .checkmark-container {
+                position: absolute;
+                top: 3px;
+                left: 5px;
+                opacity: 1;
+                height: 19px;
+                width: 19px;
+                padding: 2px;
+
+                opacity: 0;
+
+                cursor: pointer;
+
+                &:hover {
+                    transition: 0.3s ease;
+                    opacity: 1;
+                }
+
+                &:active {
+                    transition: 0.5s ease;
+                    transform: translateY(10px);
+                    opacity: 1;
+                }
 
             }
 
-            .tag-icon {
-                height: $task-small-size*1.2;
-                width: $task-small-size*1.2;
-                margin-right: 5px;
-            }
+        }
 
-            .calendar-icon {
-                height: $task-small-size*1.2;
-                width: $task-small-size*1.2;
-                margin-right: 5px;
-            }
+        .priority-icon {
+            height: $task-priority-icon-size;
+            width: $task-priority-icon-size;
 
-            .overdue {
-                fill: $overdue-color;
-                color: $overdue-color;
-            }
+            fill-opacity: 0.5;
+            stroke-width: 1px;
+        }
 
-            .today {
-                fill: $today-color;
-                color: $today-color;
-            }
+        .priority-1 {
+            fill: $priority-1-color;
+            stroke: $priority-1-color;
+        }
 
-            .future {
-                fill: $future-color;
-                color: $future-color;
-            }
+        .priority-2 {
+            fill: $priority-2-color;
+            stroke: $priority-2-color;
+        }
 
-            .priority-icon {
-                height: $task-priority-icon-size;
-                width: $task-priority-icon-size;
+        .priority-3 {
+            fill: $priority-3-color;
+            stroke: $priority-3-color;
+        }
 
-                fill-opacity: 0.5;
-                stroke-width: 1px;
-            }
+        .priority-4 {
+            fill: white;
+            stroke: $priority-4-color;
+        }
 
-            .priority-1 {
-                fill: $priority-1-color;
-                stroke: $priority-1-color;
-            }
+        .inbox-display {
+            display: flex;
+            align-items: end;
 
-            .priority-2 {
-                fill: $priority-2-color;
-                stroke: $priority-2-color;
-            }
-
-            .priority-3 {
-                fill: $priority-3-color;
-                stroke: $priority-3-color;
-            }
-
-            .priority-4 {
-                fill: white;
-                stroke: $priority-4-color;
+            p {
+                margin-right: $small-icon-spacing;
             }
 
         }
 
 
+    }
+
+    .add-task-container {
+        margin-top: 4px;
+        margin-bottom: 30px;
+
+        .add-task-button {
+            display: flex;
+            align-items: center;
+
+            height: 40px;
+
+            cursor: pointer;
+            // this calculation broke my brain
+            margin-left: ($task-priority-icon-size*0.25);
+
+            p {
+                margin: 10px;
+                font-size: $task-base-size;
+                color: $body-light-text;
+            }
+
+            .plus-button {
+                // fill is manually in js 
+                height: $task-base-size*1.2;
+                width: $task-base-size*1.2;
+                fill: $body-light-text;
+                stroke: $body-light-text;
+                stroke-width: 1px;
+
+                position: relative;
+                top: 2px;
+
+            }
+        }
+
+        .add-task-panel {
+            border: 1px solid;
+            border-color: $light-border;
+            border-radius: 10px;
+
+            padding: 10px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            %form-component {
+                color: $body-light-text;
+                border: hidden;
+                width: 100%;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .new-task-title {
+                @extend %form-component;
+                font-weight: 400;
+
+                margin: 0px;
+                margin-bottom: 10px;
+
+                font-size: $task-base-size *1.1; // SEMI BOLD 
+
+            }
+
+            .new-task-description {
+                @extend %form-component;
+                font-size: $task-small-size*1.1;
+                margin: 0px;
+                margin-bottom: 4%;
+
+            }
+
+            .info-buttons-container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .info-button-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 2px 5px 2px 5px;
+                margin-right: 5px;
+
+                border: 1px solid;
+                border-color: $light-border;
+                border-radius: 5px;
+
+                .calendar-icon {
+                    position: relative;
+                    top: 2px;
+                }
+
+            }
+
+        }
+
+        .confirm-add-task-container {
+            display: flex;
+            justify-content: flex-end;
+
+            margin-top: 0.6rem;
+
+            %button {
+                height: 35px;
+                width: 80px;
+
+                border-radius: 8px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-weight: bold;
+                font-size: $task-base-size;
+
+                user-select: none;
+
+                margin-left: 10px;
+
+                transition: 0.3s ease;
+
+                &:hover {
+                    filter: brightness(0.9)
+                }
+            }
+
+            .add-button {
+                @extend %button;
+                background-color: #d63d37;
+                color: rgb(240, 240, 240);
+            }
+
+            .cancel-button {
+                @extend %button;
+                background-color: #cacaca;
+                color: rgb(87, 90, 94);
+
+                cursor: pointer;
+            }
+        }
     }
 }
