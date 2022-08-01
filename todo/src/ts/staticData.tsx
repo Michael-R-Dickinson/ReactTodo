@@ -4,6 +4,7 @@ import { TbInboxOff, TbFilter } from 'react-icons/tb'
 
 import { ProjectType, InboxType } from './sidebar/sidebar_types';
 import { SettingsInterface, TaskGrouper, TaskInterface } from './body/body_types';
+import { getDateTotal } from './utils';
 
 export enum projectPriorityColors {
     '#3eb89d' = 1,
@@ -35,9 +36,9 @@ export const defaultSettings = {
 }
 
 export const defaultGroupers: TaskGrouper[] = [
-    { name: 'Overdue', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() < today.getDate() }, allowAddTask: false },
-    { name: 'Today', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() == today.getDate() }, allowAddTask: true },
-    { name: 'Upcoming', fn: (task: TaskInterface) => { const today = new Date; return task.dueDate.getDate() > today.getDate() }, allowAddTask: false }
+    { name: 'Overdue', fn: (task: TaskInterface) => { const today = new Date; return getDateTotal(task.dueDate) < getDateTotal(today) }, allowAddTask: false },
+    { name: 'Today', fn: (task: TaskInterface) => { const today = new Date; return getDateTotal(task.dueDate) == getDateTotal(today) }, allowAddTask: true },
+    { name: 'Upcoming', fn: (task: TaskInterface) => { const today = new Date; return getDateTotal(task.dueDate) > getDateTotal(today) }, allowAddTask: false }
 
 ]
 
@@ -89,7 +90,20 @@ export const defaultTasks: TaskInterface[] = [
         comments: [],
         subTasks: [],
         id: 4,
+    },
+    {
+        title: 'Go To Work',
+        description: 'Future Task 1 description',
+        project: { name: 'project1', priority: 1, count: 2, id: 10 },
+        status: false,
+        dueDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+        priority: 4,
+        labels: [],
+        comments: [],
+        subTasks: [],
+        id: 5,
     }
+
 
 
 ]

@@ -7,5 +7,11 @@ function hashObject(obj: any): number {
     return parseInt(Md5.hashStr(JSON.stringify(obj)).replace(/\D/g, ""))
 }
 
+// seems barbaric but it works
+function getDateTotal(date: Date): number {
+    const dateTotal = date.getFullYear() + date.getMonth() * 100 + date.getDate()
+    return dateTotal
+}
 
-export { delay, hashObject }
+
+export { delay, hashObject, getDateTotal }

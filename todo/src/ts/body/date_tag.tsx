@@ -1,10 +1,11 @@
+import { getDateTotal } from "../utils";
 import { CalendarIcon } from "./icons";
 
 function DateTag({ dueDate }: { dueDate: Date }) {
     const today = new Date();
 
-    const todayDay = today.getDate();
-    const dueDay = dueDate.getDate()
+    const todayDay = getDateTotal(today)
+    const dueDay = getDateTotal(dueDate)
 
     const timeSignature = dueDay < todayDay ? 'overdue' : dueDay > todayDay ? 'future' : 'today'
 
